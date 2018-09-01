@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager {
-Rocketship rocket;
+Human rocket;
 ArrayList<Projectile> projectiles= new ArrayList<Projectile>();
-ArrayList<Alien> aliens= new ArrayList<Alien>();
+ArrayList<Falling_Fruit> aliens= new ArrayList<Falling_Fruit>();
 long enemyTimer = 0;
 int enemySpawnTime = 3000;
 int score = 0;
@@ -19,26 +19,23 @@ public int getScore() {
 
 
 
-public ObjectManager(Rocketship rocket) {
+public ObjectManager(Human rocket) {
 	this.rocket = rocket;
 }
 
-public void addProjectile(Projectile object) {
+ void addProjectile(Projectile object) {
 	projectiles.add(object);
 }
 
-public void addAlien(Alien a) {
+public void addAlien(Falling_Fruit a) {
 	aliens.add(a);
 }
 
 public void update() {
 	rocket.update();
-	for (int i = 0; i < projectiles.size(); i++) {
-		Projectile p = projectiles.get(i);
-		p.update();
-	}
+	
 	for (int i = 0; i < aliens.size(); i++) {
-	    Alien a = aliens.get(i);
+	    Falling_Fruit a = aliens.get(i);
 		a.update();
 	}
 	
@@ -51,12 +48,12 @@ public void draw(Graphics g) {
 		p.draw(g);
 	}
 	for (int i = 0; i < aliens.size(); i++) {
-	    Alien a = aliens.get(i);
+	    Falling_Fruit a = aliens.get(i);
 		a.draw(g);
 	}
 }
 public void checkCollision() {
-	for(Alien a : aliens){
+	for(Falling_Fruit a : aliens){
 
         if(rocket.collisionBox.intersects(a.collisionBox)){
 
@@ -66,7 +63,7 @@ public void checkCollision() {
 
 }
 	for(Projectile p : projectiles){
-for (Alien a : aliens) {
+for (Falling_Fruit a : aliens) {
 	if(a.collisionBox.intersects(p.collisionBox)){
 
         p.isAlive = false;
@@ -80,7 +77,7 @@ for (Alien a : aliens) {
 }
 public void manageEnemies(){
     if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-            addAlien(new Alien(new Random().nextInt(LeagueInvaders.WIDTH), 0, 50, 50, 50));
+            addAlien(new Falling_Fruit(new Random().nextInt(LeagueInvaders.WIDTH), 0, 50, 50, 50));
             enemySpawnTime = new Random().nextInt(3000);
 enemyTimer = System.currentTimeMillis();
     }
@@ -94,7 +91,7 @@ public void purgeObjects() {
 		}
 	}
 	for (int i = 0; i < aliens.size(); i++) {
-	    Alien a = aliens.get(i);
+	    Falling_Fruit a = aliens.get(i);
 		if(a.isAlive == false) {
 			aliens.remove(i);
 		}

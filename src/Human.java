@@ -2,7 +2,7 @@
 
 import java.awt.*;
 
-public class Rocketship extends GameObject {
+public class Human extends GameObject {
 	private boolean left;
 	private boolean right;
 	private boolean up;
@@ -54,7 +54,7 @@ public class Rocketship extends GameObject {
 	}
 	
 	public void draw(Graphics g) {
-		g.drawImage(GamePanel.rocketImg, x, y, width, height, null);
+		g.drawImage(GamePanel.hoomanImg, x, y, 196, 300, null);
 		
 
 
@@ -64,7 +64,7 @@ public class Rocketship extends GameObject {
 
 	}
 
-	public Rocketship(int x, int y, int width, int height, int speed) {
+	public Human(int x, int y, int width, int height, int speed) {
 		super(x, y, width, height, speed);
 		// TODO Auto-generated constructor stub
 	} 

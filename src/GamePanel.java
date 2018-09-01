@@ -33,13 +33,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     
     public static BufferedImage alienImg;
 
-    public static BufferedImage rocketImg;
+    public static BufferedImage hoomanImg;
 
     public static BufferedImage bulletImg;
 
-    public static BufferedImage spaceImg;
+    public static BufferedImage jungleImg;
     
-    Rocketship ship = new Rocketship(250, 700, 50, 50, 5);
+    Human ship = new Human(250, 700, 50, 50, 5);
     
     ObjectManager manager = new ObjectManager(ship);
 	
@@ -48,16 +48,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 		g.setColor(Color.cyan);
 		g.setFont(titleFont);
-		g.drawString("LEAGUE INVADERS", 80, 100);
+		g.drawString("Stranded", 170, 100);
 		g.setFont(buttonFont);
 		g.drawString("Press ENTER to start", 120, 300);
-		g.drawString("Press SPACE for instructions", 80, 600);
+		g.drawString("Collect all the food possible until saved", 60, 600);
 		
 	}
 	
 public void drawGameState(Graphics g) {
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-	g.drawImage(GamePanel.spaceImg, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
+	g.drawImage(GamePanel.jungleImg, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
 	manager.draw(g);
     
 	}
@@ -113,11 +113,11 @@ public void updateEndState() {
 
          alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
 
-         rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+         hoomanImg = ImageIO.read(this.getClass().getResourceAsStream("hooman.png"));
 
          bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
 
-         spaceImg = ImageIO.read(this.getClass().getResourceAsStream("space.png"));
+         jungleImg = ImageIO.read(this.getClass().getResourceAsStream("Aphrodite-Jungle for STRANDED.jpg"));
 
  } catch (IOException e) {
 
@@ -174,7 +174,7 @@ public void updateEndState() {
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
 		
 		if(currentState==END_STATE) {
-			 ship = new Rocketship(250, 700, 50, 50, 5);
+			 ship = new Human(250, 700, 50, 50, 5);
 			 manager = new ObjectManager(ship);
 		}currentState++;
 		}
