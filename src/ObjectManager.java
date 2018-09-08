@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ObjectManager {
-Human rocket;
-ArrayList<Projectile> projectiles= new ArrayList<Projectile>();
-ArrayList<Falling_Fruit> aliens= new ArrayList<Falling_Fruit>();
+Human human;
+//ArrayList<Projectile> projectiles= new ArrayList<Projectile>();
+ArrayList<Falling_Fruit> fruit= new ArrayList<Falling_Fruit>();
 long enemyTimer = 0;
 int enemySpawnTime = 3000;
 int score = 0;
@@ -20,83 +20,84 @@ public int getScore() {
 
 
 public ObjectManager(Human rocket) {
-	this.rocket = rocket;
+	this.human = rocket;
 }
 
- void addProjectile(Projectile object) {
-	projectiles.add(object);
-}
+// void addProjectile(Projectile object) {
+//	projectiles.add(object);
+//}
 
 public void addAlien(Falling_Fruit a) {
-	aliens.add(a);
+	fruit.add(a);
 }
 
 public void update() {
-	rocket.update();
+	human.update();
 	
-	for (int i = 0; i < aliens.size(); i++) {
-	    Falling_Fruit a = aliens.get(i);
+	for (int i = 0; i < fruit.size(); i++) {
+	    Falling_Fruit a = fruit.get(i);
 		a.update();
 	}
 	
 }
 
 public void draw(Graphics g) {
-	rocket.draw(g);
-	for (int i = 0; i < projectiles.size(); i++) {
-		Projectile p = projectiles.get(i);
-		p.draw(g);
-	}
-	for (int i = 0; i < aliens.size(); i++) {
-	    Falling_Fruit a = aliens.get(i);
+	human.draw(g);
+//	for (int i = 0; i < projectiles.size(); i++) {
+//		Projectile p = projectiles.get(i);
+//		p.draw(g);
+//	}
+	for (int i = 0; i < fruit.size(); i++) {
+	    Falling_Fruit a = fruit.get(i);
 		a.draw(g);
 	}
 }
 public void checkCollision() {
-	for(Falling_Fruit a : aliens){
+	for(Falling_Fruit f : fruit){
 
-        if(rocket.collisionBox.intersects(a.collisionBox)){
+        if(human.collisionBox.intersects(f.collisionBox)){
 
-                rocket.isAlive = false;
+                f.isAlive = false;
 
         }
 
 }
-	for(Projectile p : projectiles){
-for (Falling_Fruit a : aliens) {
-	if(a.collisionBox.intersects(p.collisionBox)){
+//	for(Projectile p : projectiles){
+for (Falling_Fruit f : fruit) {
+	if(f.collisionBox.intersects(human.collisionBox)){
 
-        p.isAlive = false;
-        a.isAlive = false;
-        score+=1;
+//        p.isAlive = false;
+       f.isAlive = false;
+       score+=1;
+	}
 }
 }
         
 
-}
-}
+//}
+//}
 public void manageEnemies(){
     if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-            addAlien(new Falling_Fruit(new Random().nextInt(LeagueInvaders.WIDTH), 0, 50, 50, 50));
+            addAlien(new Falling_Fruit(new Random().nextInt(Stranded.WIDTH), 0, 100, 100, 100));
             enemySpawnTime = new Random().nextInt(3000);
 enemyTimer = System.currentTimeMillis();
     }
 }
 
 public void purgeObjects() {
-	for (int i = 0; i < projectiles.size(); i++) {
-		Projectile p = projectiles.get(i);
-		if(p.isAlive == false) {
-			projectiles.remove(i);
-		}
-	}
-	for (int i = 0; i < aliens.size(); i++) {
-	    Falling_Fruit a = aliens.get(i);
+//	for (int i = 0; i < projectiles.size(); i++) {
+//		Projectile p = projectiles.get(i);
+//		if(p.isAlive == false) {
+//			projectiles.remove(i);
+//		}
+//	8
+	for (int i = 0; i < fruit.size(); i++) {
+	    Falling_Fruit a = fruit.get(i);
 		if(a.isAlive == false) {
-			aliens.remove(i);
+			fruit.remove(i);
 		}
 	}
-	if(rocket.isAlive == false) {
+	if(human.isAlive == false) {
 		GamePanel.currentState = GamePanel.END_STATE;
 	}
 	

@@ -4,7 +4,7 @@ import java.awt.*;
 
 import javax.swing.JFrame;
 
-public class LeagueInvaders {
+public class Stranded {
 	static JFrame window;
 	GamePanel game;
 	final static int WIDTH = 500;
@@ -13,11 +13,11 @@ public static void main(String[] args) {
     window = new JFrame();
 	window.setSize(500, 800);
 	window.setVisible(true);
-	LeagueInvaders League = new LeagueInvaders();
-	League.setup();
-	window.addKeyListener(League.game);
+	Stranded stranded = new Stranded();
+	stranded.setup();
+	window.addKeyListener(stranded.game);
 }
-  public LeagueInvaders() {
+  public Stranded() {
 	  game = new GamePanel();
   }
 public void setup() {

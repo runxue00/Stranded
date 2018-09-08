@@ -15,7 +15,7 @@ public class Falling_Fruit extends GameObject{
 	}
 	
 	public void draw(Graphics g) {
-		g.drawImage(GamePanel.alienImg, x, y, width, height, null);
+		g.drawImage(GamePanel.fruitImg, x, y, width, height, null);
 		
 	}
 

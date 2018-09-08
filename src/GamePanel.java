@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
     int y;
     
-    public static BufferedImage alienImg;
+    public static BufferedImage fruitImg;
 
     public static BufferedImage hoomanImg;
 
@@ -45,7 +45,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	
 	public void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+		g.fillRect(0, 0, Stranded.WIDTH, Stranded.HEIGHT);
 		g.setColor(Color.cyan);
 		g.setFont(titleFont);
 		g.drawString("Stranded", 170, 100);
@@ -56,15 +56,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	}
 	
 public void drawGameState(Graphics g) {
-	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-	g.drawImage(GamePanel.jungleImg, 0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT, null);
+	g.fillRect(0, 0, Stranded.WIDTH, Stranded.HEIGHT);
+	g.drawImage(GamePanel.jungleImg, 0, 0, Stranded.WIDTH, Stranded.HEIGHT, null);
 	manager.draw(g);
     
 	}
 
 public void drawEndState(Graphics g) {
 	g.setColor(Color.RED);
-	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	g.fillRect(0, 0, Stranded.WIDTH, Stranded.HEIGHT);
 	g.setColor(Color.black);
 	g.setFont(titleFont);
 	g.drawString("GAME OVER", 120, 100);
@@ -111,7 +111,7 @@ public void updateEndState() {
  public GamePanel() {
 	 try {
 
-         alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+         fruitImg = ImageIO.read(this.getClass().getResourceAsStream("Fruit.png"));
 
          hoomanImg = ImageIO.read(this.getClass().getResourceAsStream("hooman.png"));
 
@@ -196,7 +196,7 @@ public void updateEndState() {
 	     }
 	     
 	     if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-	    	 manager.addProjectile(new Projectile(ship.x+25, ship.y, 10, 10, 10));
+//	    	 manager.addProjectile(new Projectile(ship.x+25, ship.y, 10, 10, 10));
 	     }
 		
 	     if(e.getKeyCode() == KeyEvent.VK_ENTER) {
