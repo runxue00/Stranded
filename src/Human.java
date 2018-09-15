@@ -38,7 +38,7 @@ public class Human extends GameObject {
 	
 	
 	public void update() {
-		collisionBox.setBounds(x, y, 500, 300);
+		collisionBox.setBounds(x+40, y+150, 110, 30);
 		if(up == true) {
 			y-=speed;
 		}
@@ -55,8 +55,8 @@ public class Human extends GameObject {
 	
 	public void draw(Graphics g) {
 		g.drawImage(GamePanel.hoomanImg, x, y, 196, 300, null);
-		Graphics2D G2 = (Graphics2D) g;
-		G2.draw(collisionBox);
+//		Graphics2D G2 = (Graphics2D) g;
+//		G2.draw(collisionBox);
 
 
 

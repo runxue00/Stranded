@@ -69,7 +69,7 @@ public void drawEndState(Graphics g) {
 	g.setFont(titleFont);
 	g.drawString("GAME OVER", 120, 100);
 	g.setFont(buttonFont);
-	g.drawString("You killed " + manager.getScore() + " enemies", 130, 300);
+	g.drawString("You collected " + manager.getScore() + " days worth of food", 130, 300);
 	g.drawString("Press ENTER to restart", 120, 600);
 	
 }

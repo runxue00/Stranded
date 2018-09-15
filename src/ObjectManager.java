@@ -11,6 +11,7 @@ ArrayList<Falling_Fruit> fruit= new ArrayList<Falling_Fruit>();
 long enemyTimer = 0;
 int enemySpawnTime = 3000;
 int score = 0;
+int BadStrawberry;
 
 public int getScore() {
 	return this.score;
@@ -55,10 +56,12 @@ public void draw(Graphics g) {
 public void checkCollision() {
 	for(Falling_Fruit f : fruit){
 
-        if(human.collisionBox.intersects(f.collisionBox)){
-
+        if(human.collisionBox.intersects(f.collisionBox)) {
                 f.isAlive = false;
-
+        }
+        if(f.y+f.height>=800) {
+        	BadStrawberry++;
+        	
         }
 
 }
@@ -97,9 +100,9 @@ public void purgeObjects() {
 			fruit.remove(i);
 		}
 	}
-	if(human.isAlive == false) {
-		GamePanel.currentState = GamePanel.END_STATE;
-	}
+//	if(human.isAlive == false) {
+//		GamePanel.currentState = GamePanel.END_STATE;
+//	}
 	
 }
 }
