@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
     public static BufferedImage jungleImg;
     
-    Human ship = new Human(250, 700, 50, 50, 5);
+    Human ship = new Human(250, 500, 50, 50, 5);
     
     ObjectManager manager = new ObjectManager(ship);
 	
@@ -183,10 +183,10 @@ public void updateEndState() {
             currentState = MENU_STATE;
     }
 		if(e.getKeyCode() == KeyEvent.VK_UP) {
-	    	 ship.setUp(true);
+	    	 //ship.setUp(true);
 	     }
 	     if(e.getKeyCode() == KeyEvent.VK_DOWN) {
-	    	 ship.setDown(true);
+	    	// ship.setDown(true);
 	     }
 	     if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 	    	 ship.setRight(true);

@@ -61,7 +61,12 @@ public void checkCollision() {
         }
         if(f.y+f.height>=800) {
         	BadStrawberry++;
+        	f.isAlive = false;
+        }
+        
+        if(BadStrawberry>=3) {
         	
+        	GamePanel.currentState = GamePanel.END_STATE;
         }
 
 }
